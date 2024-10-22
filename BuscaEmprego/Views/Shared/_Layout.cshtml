@@ -14,7 +14,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
 </head>
+
 <body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-custom w-100">
+        <a class="navbar-brand" href=""><img src="~/img/icons8-business-building-64-black.png" alt="Logo Busca Emprego" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="Index">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Vaga" asp-action="Index">Vagas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Empresa" asp-action="Create"><i class="fa-regular fa-building"></i>Área da Empresa</a>
+                </li>
+                    <li class="nav-item nav-cadastro" />
+                <partial name="_LoginPartial" />
+            </ul>
+        </div>
+    </nav>
+</header>
+
     <div>
         <main role="main" class="pb-3">
             @RenderBody()

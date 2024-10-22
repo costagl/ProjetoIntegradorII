@@ -30,7 +30,7 @@ public partial class db_BuscaEmpregoContext : DbContext
     public virtual DbSet<Formacao> Formacao { get; set; }
 
     public virtual DbSet<Vaga> Vaga { get; set; }
-
+     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
         => optionsBuilder.UseSqlServer("Data Source=COSTA-GL\\SQLEXPRESS;Initial Catalog=db_BuscaEmprego;Integrated Security=True;TrustServerCertificate=True");

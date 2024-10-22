@@ -13,29 +13,35 @@ public partial class Candidato
     [Key]
     [StringLength(14)]
     [Unicode(false)]
+    [Display(Name = "CPF")]
     public string CPF { get; set; }
 
     [Required]
     [StringLength(100)]
     [Unicode(false)]
+    [Display(Name = "Nome")]
     public string Nome { get; set; }
 
     [Required]
     [StringLength(100)]
     [Unicode(false)]
+    [Display(Name = "E-mail")]
     public string Email { get; set; }
 
     [Required]
     [StringLength(100)]
     [Unicode(false)]
+    [Display(Name = "Senha")]
     public string Senha { get; set; }
 
     [StringLength(100)]
     [Unicode(false)]
+    [Display(Name = "Telefone")]
     public string Telefone { get; set; }
 
     [StringLength(100)]
     [Unicode(false)]
+    [Display(Name = "Endereço")]
     public string Endereco { get; set; }
 
     public DateOnly? DataNascimento { get; set; }

@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Model.Models;
 using Model.Repositories;
 
 namespace BuscaEmprego.Controllers
 {
-    public class CandidatoController : Controller
+    [Authorize]
+    public class CandidatoController : DefaultController
     {
         private db_BuscaEmpregoContext _context;
         public RepositoryCandidato _RepositoryCandidato;
@@ -25,6 +27,7 @@ namespace BuscaEmprego.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(Candidato candidato)
         {
@@ -62,11 +65,9 @@ namespace BuscaEmprego.Controllers
             }
             return View(candidato);
         }
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string cpf)
         {
-
-            var candidato = await _RepositoryCandidato.SelecionarChaveAsync(id);
-            return View(candidato);
+            return View(await _RepositoryCandidato.SelecionarChaveAsync("17873426700"));
         }
 
         public async Task<IActionResult> Delete(int id)

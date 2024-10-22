@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BuscaEmprego.Controllers
 {
-    public class InicioController : Controller
+    public class InicioController : DefaultController
     {
         public ActionResult Index()
         {
