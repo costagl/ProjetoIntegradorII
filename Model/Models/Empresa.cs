@@ -25,16 +25,6 @@ public partial class Empresa
     [Unicode(false)]
     public string Endereco { get; set; }
 
-    [Required]
-    [StringLength(100)]
-    [Unicode(false)]
-    public string Email { get; set; }
-
-    [Required]
-    [StringLength(100)]
-    [Unicode(false)]
-    public string Senha { get; set; }
-
     [InverseProperty("CNPJ_EmpresaNavigation")]
     public virtual ICollection<Avaliacao> Avaliacao { get; set; } = new List<Avaliacao>();
 

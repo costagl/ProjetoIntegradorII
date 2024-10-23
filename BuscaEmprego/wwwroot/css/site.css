@@ -190,4 +190,24 @@ header {
 #btn-aplicar {
 }
 
-/* Cadastros Candidato/Empresa */
+/* Cadastro e Login Candidato/Empresa */
+
+.pagina-login-cadastro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 0 0 0;
+    padding-bottom: 400px
+}
+
+.extras-login {
+    display: grid;
+    padding-top: 15px;
+    gap: 5px
+}
+
+.extras-login p{
+    margin: 0;
+    padding: 0;
+}

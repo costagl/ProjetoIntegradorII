@@ -15,7 +15,10 @@ builder.Services.AddDbContext<db_BuscaEmpregoContext>(opt => opt.UseSqlServer(bu
 
 builder.Services.AddDbContext<identity_context>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<identity_context>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<identity_context>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -22,18 +22,6 @@ public partial class Candidato
     [Display(Name = "Nome")]
     public string Nome { get; set; }
 
-    [Required]
-    [StringLength(100)]
-    [Unicode(false)]
-    [Display(Name = "E-mail")]
-    public string Email { get; set; }
-
-    [Required]
-    [StringLength(100)]
-    [Unicode(false)]
-    [Display(Name = "Senha")]
-    public string Senha { get; set; }
-
     [StringLength(100)]
     [Unicode(false)]
     [Display(Name = "Telefone")]

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Model.Models;
 using Model.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BuscaEmprego.Controllers
 {
@@ -19,6 +20,8 @@ namespace BuscaEmprego.Controllers
         //{
         //    return View(await _RepositoryVaga.SelecionarTodosAsync());
         //}
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string requisitos, string areaAtuacao, string modelo, string localizacao, string tipoContrato)
         {
             var vagas = from v in _context.Vaga
@@ -48,6 +51,7 @@ namespace BuscaEmprego.Controllers
             return View(await vagas.ToListAsync());
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             return View(await _RepositoryVaga.SelecionarChaveAsync(id));
