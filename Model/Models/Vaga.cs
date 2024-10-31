@@ -15,54 +15,46 @@ public partial class Vaga
 
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Título da Vaga")]
     public string TituloVaga { get; set; }
 
     [Required]
     [StringLength(18)]
     [Unicode(false)]
-    [Display(Name = "CNPJ da Empresa")]
     public string CNPJ_Empresa { get; set; }
 
     [Required]
-    [StringLength(400)]
+    [StringLength(1800)]
     [Unicode(false)]
-    [Display(Name = "Descrição")]
     public string Descricao { get; set; }
 
     [StringLength(400)]
     [Unicode(false)]
-    [Display(Name = "Requisitos")]
     public string Requisitos { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]
-    [Display(Name = "Área de Atuação")]
     public string AreaAtuacao { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]
-    [Display(Name = "Modelo de Trabalho")]
     public string Modelo { get; set; }
 
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Localização")]
     public string Localizacao { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]
-    [Display(Name = "Tipo de Contrato")]
     public string TipoContrato { get; set; }
 
-    [Display(Name = "Data do Início")]
     public DateOnly? DataInicio { get; set; }
 
-    [Display(Name = "Data do Fim")]
     public DateOnly? DataFim { get; set; }
 
     [ForeignKey("CNPJ_Empresa")]
     [InverseProperty("Vaga")]
-    [Display(Name = "CNPJ da Empresa")]
     public virtual Empresa CNPJ_EmpresaNavigation { get; set; }
+
+    [InverseProperty("idVagaNavigation")]
+    public virtual ICollection<Candidatura> Candidatura { get; set; } = new List<Candidatura>();
 }

@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Model.Models;
 
-[Keyless]
 public partial class Candidatura
 {
+    [Key]
     public int id { get; set; }
 
     [Required]
@@ -33,8 +33,10 @@ public partial class Candidatura
     public bool? Curriculo { get; set; }
 
     [ForeignKey("CPF_Candidato")]
+    [InverseProperty("Candidatura")]
     public virtual Candidato CPF_CandidatoNavigation { get; set; }
 
     [ForeignKey("idVaga")]
+    [InverseProperty("Candidatura")]
     public virtual Vaga idVagaNavigation { get; set; }
 }

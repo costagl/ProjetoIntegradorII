@@ -36,7 +36,7 @@ public partial class Experiencia
 
     public DateOnly? DataFim { get; set; }
 
-    [StringLength(400)]
+    [StringLength(1800)]
     [Unicode(false)]
     public string Descricao { get; set; }
 

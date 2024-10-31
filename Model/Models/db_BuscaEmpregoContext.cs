@@ -30,10 +30,9 @@ public partial class db_BuscaEmpregoContext : DbContext
     public virtual DbSet<Formacao> Formacao { get; set; }
 
     public virtual DbSet<Vaga> Vaga { get; set; }
-     
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer("Data Source=COSTA-GL\\SQLEXPRESS;Initial Catalog=db_BuscaEmprego;Integrated Security=True;TrustServerCertificate=True");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer("Data Source=COSTA-GL\\SQLEXPRESS;Initial Catalog=db_BuscaEmprego;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -52,13 +51,11 @@ public partial class db_BuscaEmpregoContext : DbContext
 
         modelBuilder.Entity<Candidatura>(entity =>
         {
-            entity.Property(e => e.id).ValueGeneratedOnAdd();
-
-            entity.HasOne(d => d.CPF_CandidatoNavigation).WithMany()
+            entity.HasOne(d => d.CPF_CandidatoNavigation).WithMany(p => p.Candidatura)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Candidatura_Candidato");
 
-            entity.HasOne(d => d.idVagaNavigation).WithMany()
+            entity.HasOne(d => d.idVagaNavigation).WithMany(p => p.Candidatura)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Candidatura_Vaga");
         });

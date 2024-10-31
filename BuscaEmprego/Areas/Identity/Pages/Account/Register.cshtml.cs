@@ -110,19 +110,25 @@ namespace BuscaEmprego.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var user = CreateUser(); // Cria uma nova instância do usuário
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None); // Define o nome de usuário
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None); // Define o email do usuário
+                var result = await _userManager.CreateAsync(user, Input.Password); // Cria o usuário com a senha
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("User created a new account with password."); // Loga que o usuário foi criado com sucesso
 
-                    var userId = await _userManager.GetUserIdAsync(user);
+                    var userId = await _userManager.GetUserIdAsync(user); // Obtém o ID do usuário recém-criado
+
+                    var userRole = Request.Form["UserRole"]; // Captura o valor do papel do usuário
+                    string role = userRole == "3" ? "empresa" : "candidato"; // Verifica se é Empresa ou Candidato
+                    await _userManager.AddToRoleAsync(user, role); // Adiciona o usuário à role correspondente
+
+                    // Confirmação de Email
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
@@ -144,15 +150,17 @@ namespace BuscaEmprego.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description); // Adiciona erros de validação ao ModelState
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
+
+
 
         private IdentityUser CreateUser()
         {

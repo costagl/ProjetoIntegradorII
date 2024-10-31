@@ -16,6 +16,10 @@ public partial class Empresa
     public string CNPJ { get; set; }
 
     [Required]
+    [StringLength(450)]
+    public string UserId { get; set; }
+
+    [Required]
     [StringLength(100)]
     [Unicode(false)]
     public string Nome { get; set; }

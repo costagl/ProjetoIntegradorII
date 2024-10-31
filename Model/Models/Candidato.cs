@@ -13,29 +13,32 @@ public partial class Candidato
     [Key]
     [StringLength(14)]
     [Unicode(false)]
-    [Display(Name = "CPF")]
     public string CPF { get; set; }
+
+    [Required]
+    [StringLength(450)]
+    public string UserId { get; set; }
 
     [Required]
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Nome")]
     public string Nome { get; set; }
 
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Telefone")]
     public string Telefone { get; set; }
 
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Endereço")]
     public string Endereco { get; set; }
 
     public DateOnly? DataNascimento { get; set; }
 
     [InverseProperty("CPF_CandidatoNavigation")]
     public virtual ICollection<Avaliacao> Avaliacao { get; set; } = new List<Avaliacao>();
+
+    [InverseProperty("CPF_CandidatoNavigation")]
+    public virtual ICollection<Candidatura> Candidatura { get; set; } = new List<Candidatura>();
 
     [InverseProperty("CPF_CandidatoNavigation")]
     public virtual ICollection<Experiencia> Experiencia { get; set; } = new List<Experiencia>();

@@ -30,7 +30,7 @@ public partial class Formacao
 
     public DateOnly? DataFim { get; set; }
 
-    [StringLength(400)]
+    [StringLength(1800)]
     [Unicode(false)]
     public string Descricao { get; set; }
 
