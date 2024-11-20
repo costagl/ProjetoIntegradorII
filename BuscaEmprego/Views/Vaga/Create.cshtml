@@ -1,0 +1,78 @@
+﻿@model Model.Models.Vaga
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="ce-title">Cadastrar nova Vaga</h1>
+
+<div class="ce-container">
+    <div class="ce-header">
+        <h4 class="ce-subtitle">Vaga</h4>
+        <hr class="ce-divider" />
+    </div>
+    <div class="ce-form-container">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="ce-validation-summary text-danger"></div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="TituloVaga" class="control-label ce-label"></label>
+                <input asp-for="TituloVaga" class="form-control ce-input" />
+                <span asp-validation-for="TituloVaga" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="CNPJ_Empresa" class="control-label ce-label"></label>
+                <input asp-for="CNPJ_Empresa" class="form-control ce-input" />
+                <span asp-validation-for="CNPJ_Empresa" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="Descricao" class="control-label ce-label"></label>
+                <textarea asp-for="Descricao" class="form-control ce-input ce-textarea"></textarea>
+                <span asp-validation-for="Descricao" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="Requisitos" class="control-label ce-label"></label>
+                <textarea asp-for="Requisitos" class="form-control ce-input ce-textarea"></textarea>
+                <span asp-validation-for="Requisitos" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="AreaAtuacao" class="control-label ce-label"></label>
+                <input asp-for="AreaAtuacao" class="form-control ce-input" />
+                <span asp-validation-for="AreaAtuacao" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="Modelo" class="control-label ce-label"></label>
+                <input asp-for="Modelo" class="form-control ce-input" />
+                <span asp-validation-for="Modelo" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="Localizacao" class="control-label ce-label"></label>
+                <input asp-for="Localizacao" class="form-control ce-input" />
+                <span asp-validation-for="Localizacao" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="form-group ce-form-group">
+                <label asp-for="TipoContrato" class="control-label ce-label"></label>
+                <input asp-for="TipoContrato" class="form-control ce-input" />
+                <span asp-validation-for="TipoContrato" class="ce-validation text-danger"></span>
+            </div>
+
+            <div class="ce-button-group">
+                <input type="submit" value="Create" class="btn ce-button-primary" />
+                <a asp-action="Index" class="btn ce-button-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

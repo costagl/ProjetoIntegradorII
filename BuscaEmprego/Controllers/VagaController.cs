@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Model.Models;
 using Model.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BuscaEmprego.Controllers
 {
-    public class VagaController : DefaultController
+    [Authorize(Roles = "admin, empresa")]
+    public class VagaController : Controller
     {
         private db_BuscaEmpregoContext _context;
         public RepositoryVaga _RepositoryVaga;
@@ -50,11 +52,70 @@ namespace BuscaEmprego.Controllers
 
             return View(await vagas.ToListAsync());
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Vaga vaga)
+        {
+            if (ModelState.IsValid)
+            {
+                await _RepositoryVaga.IncluirAsync(vaga);
+                ViewData["Mensagem"] = "Dados salvos com sucesso.";
+                return RedirectToAction("IndexVagasEmpresa", new { cnpj = vaga.CNPJ_Empresa });
+            }
+            else
+            {
+                ViewData["MensagemErro"] = "Ocorreu um erro ao salvar os dados.";
+            }
+
+            return View(vaga);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var vaga = await _RepositoryVaga.SelecionarChaveAsync(id);
+            return View(vaga);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Vaga vaga)
+        {
+            if (ModelState.IsValid)
+            {
+                await _RepositoryVaga.AlterarAsync(vaga);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(vaga);
+            }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var vaga = await _RepositoryVaga.SelecionarChaveAsync(id);
+            return View(vaga);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Vaga vaga)
+        {
+            await _RepositoryVaga.ExcluirAsync(vaga);
+            return RedirectToAction("Index");
+        }
 
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             return View(await _RepositoryVaga.SelecionarChaveAsync(id));
+        }
+
+        public async Task<IActionResult> IndexVagasEmpresa(string cnpj)
+        {
+            return View(await _RepositoryVaga.SelecionarTodosPorCnpjAsync(cnpj));
         }
     }
 }

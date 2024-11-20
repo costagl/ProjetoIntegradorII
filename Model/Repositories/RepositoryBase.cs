@@ -57,5 +57,6 @@ namespace Model.Repositories
         {
             return await _dbSet.ToListAsync();
         }
+
     }
 }

@@ -7,55 +7,34 @@
 <div class="vagas-filtro">
     <h3 style="margin: 30px 0px 20px 0px">Filtro de Vagas</h3>
     <form asp-controller="Vaga" asp-action="Index" method="get">
-        <div class ="form-group-all">
+        <div class="form-group-all">
             <div class="form-group">
                 <label for="requisitos">Requisitos:</label>
-                <select id="requisitos" name="requisitos" class="form-control">
-                    <option value="">Qualquer</option>
-                    <option value="JavaScript">JavaScript</option>
-                    <option value="C#">C#</option>
-                    <option value="SQL">SQL</option>
-                </select>
+                <input type="text" id="requisitos" name="requisitos" class="form-control" placeholder="Digite aqui...">
             </div>
 
             <div class="form-group">
                 <label for="areaAtuacao">Área de Atuação:</label>
-                <select id="areaAtuacao" name="areaAtuacao" class="form-control">
-                    <option value="">Qualquer</option>
-                    <option value="TI">TI</option>
-                    <option value="Telecomunicações">Telecomunicações</option>
-                    <option value="DevOps">DevOps</option>
-                </select>
+
+                <input type="text" id="requisitos" name="areaAtuacao" class="form-control" placeholder="Digite aqui...">
             </div>
 
             <div class="form-group">
                 <label for="modelo">Modelo de Trabalho:</label>
-                <select id="modelo" name="modelo" class="form-control">
-                    <option value="">Qualquer</option>
-                    <option value="Presencial">Presencial</option>
-                    <option value="Remoto">Remoto</option>
-                    <option value="Híbrido">Híbrido</option>
-                </select>
+
+                <input type="text" id="requisitos" name="modelo" class="form-control" placeholder="Digite aqui...">
             </div>
 
             <div class="form-group">
                 <label for="localizacao">Localização:</label>
-                <select id="localizacao" name="localizacao" class="form-control">
-                    <option value="">Qualquer</option>
-                    <option value="Resende">Resende</option>
-                    <option value="Porto Real">Porto Real</option>
-                    <option value="Volta Redonda">Volta Redonda</option>
-                </select>
+
+                <input type="text" id="requisitos" name="localizacao" class="form-control" placeholder="Digite aqui...">
             </div>
 
             <div class="form-group">
                 <label for="tipoContrato">Tipo de Contrato:</label>
-                <select id="tipoContrato" name="tipoContrato" class="form-control">
-                    <option value="">Qualquer</option>
-                    <option value="CLT">CLT</option>
-                    <option value="PJ">PJ</option>
-                    <option value="Freelancer">Freelancer</option>
-                </select>
+
+                <input type="text" id="requisitos" name="tipoContrato" class="form-control" placeholder="Digite aqui...">
             </div>
         </div>
         <button type="submit" class="btn btn-primary"><i class="fa-solid fa-filter"></i>Filtrar</button>

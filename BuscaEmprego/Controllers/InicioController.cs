@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BuscaEmprego.Controllers
 {
+    [AllowAnonymous]
     public class InicioController : DefaultController
     {
-        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

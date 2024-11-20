@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -13,13 +14,15 @@ public partial class Candidato
     [Key]
     [StringLength(14)]
     [Unicode(false)]
+    [Required(ErrorMessage = "CPF é obrigatório")]
+    [RegularExpression(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$", ErrorMessage = "O CPF deve estar no formato 000.000.000-00")]
     public string CPF { get; set; }
 
     [Required]
     [StringLength(450)]
     public string UserId { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Nome é obrigatório")]
     [StringLength(100)]
     [Unicode(false)]
     public string Nome { get; set; }
@@ -28,21 +31,27 @@ public partial class Candidato
     [Unicode(false)]
     public string Telefone { get; set; }
 
+    [Display(Name = "Endereço")]
     [StringLength(100)]
     [Unicode(false)]
     public string Endereco { get; set; }
 
+    [Display(Name = "Data de Nascimento")]
     public DateOnly? DataNascimento { get; set; }
 
+    [Display(Name = "Avaliação")]
     [InverseProperty("CPF_CandidatoNavigation")]
     public virtual ICollection<Avaliacao> Avaliacao { get; set; } = new List<Avaliacao>();
 
+    [Display(Name = "Candidatura")]
     [InverseProperty("CPF_CandidatoNavigation")]
     public virtual ICollection<Candidatura> Candidatura { get; set; } = new List<Candidatura>();
 
+    [Display(Name = "Experiência")]
     [InverseProperty("CPF_CandidatoNavigation")]
     public virtual ICollection<Experiencia> Experiencia { get; set; } = new List<Experiencia>();
 
+    [Display(Name = "Formação")]
     [InverseProperty("CPF_CandidatoNavigation")]
     public virtual ICollection<Formacao> Formacao { get; set; } = new List<Formacao>();
 }

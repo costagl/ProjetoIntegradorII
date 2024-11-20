@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,13 @@ namespace Model.Repositories
         public RepositoryEmpresa(db_BuscaEmpregoContext db, bool saveChanges = true) : base(db, saveChanges)
         {
 
+        }
+        public async Task<Empresa> SelecionarUserIdAsync(string userId)
+        {
+            var _db = new db_BuscaEmpregoContext();
+            var empresa = await _db.Empresa.FirstOrDefaultAsync(e => e.UserId == userId);
+
+            return empresa;
         }
     }
 }

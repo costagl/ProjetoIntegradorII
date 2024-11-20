@@ -113,20 +113,20 @@ namespace BuscaEmprego.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = CreateUser(); // Cria uma nova instância do usuário
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None); // Define o nome de usuário
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None); // Define o email do usuário
-                var result = await _userManager.CreateAsync(user, Input.Password); // Cria o usuário com a senha
+                var user = CreateUser();
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password."); // Loga que o usuário foi criado com sucesso
+                    _logger.LogInformation("User created a new account with password.");
 
-                    var userId = await _userManager.GetUserIdAsync(user); // Obtém o ID do usuário recém-criado
+                    var userId = await _userManager.GetUserIdAsync(user);
 
-                    var userRole = Request.Form["UserRole"]; // Captura o valor do papel do usuário
-                    string role = userRole == "3" ? "empresa" : "candidato"; // Verifica se é Empresa ou Candidato
-                    await _userManager.AddToRoleAsync(user, role); // Adiciona o usuário à role correspondente
+                    var userRole = Request.Form["UserRole"];
+                    string role = userRole == "3" ? "empresa" : "candidato"; 
+                    await _userManager.AddToRoleAsync(user, role); 
 
                     // Confirmação de Email
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -153,7 +153,7 @@ namespace BuscaEmprego.Areas.Identity.Pages.Account
 
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description); // Adiciona erros de validação ao ModelState
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 

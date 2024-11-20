@@ -1,0 +1,41 @@
+﻿@model Model.Models.Empresa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<body>
+    <div class="div-details-ambos">
+        <div>
+            <h3 class="header-title">Perfil Empresa</h3>
+            <hr class="divider" />
+            <dl class="row details-list">
+                @Html.HiddenFor(model => model.UserId)
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.CNPJ)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.CNPJ)
+                </dd>
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.Endereco)
+                </dd>
+            </dl>
+        </div>
+        <div class="action-links">
+            @Html.ActionLink("Alterar", "Edit", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Vagas", "IndexVagasEmpresa", "Vaga", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Candidaturas", "Index", "Candidatura", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
+            <a asp-action="Index" class="btn-action">Voltar</a>
+        </div>
+    </div>
+</body>

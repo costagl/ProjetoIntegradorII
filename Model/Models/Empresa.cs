@@ -27,6 +27,7 @@ public partial class Empresa
     [Required]
     [StringLength(100)]
     [Unicode(false)]
+    [Display(Name = "Endereço")]
     public string Endereco { get; set; }
 
     [InverseProperty("CNPJ_EmpresaNavigation")]

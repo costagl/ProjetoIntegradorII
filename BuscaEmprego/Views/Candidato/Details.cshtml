@@ -1,43 +1,48 @@
 ﻿@model Model.Models.Candidato
 
 @{
-    ViewData["Title"] = "Detalhes";
+    ViewData["Title"] = "Details";
 }
-<div id="div-details-vagas">
-    <a asp-controller="Vaga" asp-action="Index" id="btn-voltar" class="btn btn-primary" role="button">
-        <i class="fa-solid fa-arrow-left" style="padding-right: 5px"></i>
-        Voltar à lista de vagas
-    </a>
-    <h3 style="margin-top: 20px">Perfil Candidato</h3>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CPF)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CPF)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Endereco)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Endereco)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+<body>
+    <div class="div-details-ambos">
+        <div>
+            <h3 class="header-title">Perfil Candidato</h3>
+            <hr class="divider" />
+            <dl class="row details-list">
+                @Html.HiddenFor(model => model.UserId)
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.CPF)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.CPF)
+                </dd>
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.Telefone)
+                </dd>
+                <dt class="col_texto">
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </dt>
+                <dd class="col_conteudo">
+                    @Html.DisplayFor(model => model.Endereco)
+                </dd>
+            </dl>
+        </div>
+        <div class="action-links">
+            @Html.ActionLink("Alterar", "Edit", new { cpf = Model.CPF }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Formação", "IndexListaPorCPF", "Formacao", new { cpf = Model.CPF }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Experiências", "Index", "Experiencia", new { cpf = Model.CPF }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Candidaturas", "Index", "Candidatura", new { cpf = Model.CPF }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Avaliações de Empresas", "Index", "Avaliacao", new { cpf = Model.CPF }, new { @class = "btn-action" }) |
+            <a asp-action="Index" class="btn-action">Back to List</a>
+        </div>
+    </div>
+</body>
