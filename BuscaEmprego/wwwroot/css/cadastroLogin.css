@@ -1,0 +1,34 @@
+﻿.pagina-login-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 200px 0 0;
+    padding-bottom: 1000px;
+}
+
+.extras-login {
+    display: grid;
+    padding-top: 15px;
+    gap: 5px;
+}
+
+    .extras-login p {
+        margin: 0;
+        padding: 0;
+    }
+
+.form-switch {
+    display: flex;
+    margin: 0 0 15px 30px;
+    align-content: center;
+    justify-content: center;
+}
+
+    .form-switch input {
+        font-size: 20px;
+    }
+
+    .form-switch label {
+        font-size: 15px;
+    }

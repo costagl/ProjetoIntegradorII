@@ -14,6 +14,13 @@ namespace Model.Repositories
         {
 
         }
+        public Empresa SelecionarUserId(string userId)
+        {
+            var _db = new db_BuscaEmpregoContext();
+            var empresa = _db.Empresa.FirstOrDefault(e => e.UserId == userId);
+
+            return empresa;
+        }
         public async Task<Empresa> SelecionarUserIdAsync(string userId)
         {
             var _db = new db_BuscaEmpregoContext();

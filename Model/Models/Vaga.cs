@@ -15,19 +15,16 @@ public partial class Vaga
 
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Título da Vaga")]
     public string TituloVaga { get; set; }
 
     [Required]
     [StringLength(18)]
     [Unicode(false)]
-    [Display(Name = "CNPJ da Empresa")]
     public string CNPJ_Empresa { get; set; }
 
     [Required]
     [StringLength(1800)]
     [Unicode(false)]
-    [Display(Name = "Descrição")]
     public string Descricao { get; set; }
 
     [StringLength(400)]
@@ -36,7 +33,6 @@ public partial class Vaga
 
     [StringLength(50)]
     [Unicode(false)]
-    [Display(Name = "Área de Atuação")]
     public string AreaAtuacao { get; set; }
 
     [StringLength(50)]
@@ -45,18 +41,14 @@ public partial class Vaga
 
     [StringLength(100)]
     [Unicode(false)]
-    [Display(Name = "Localização")]
     public string Localizacao { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]
-    [Display(Name = "Tipo de Contrato")]
     public string TipoContrato { get; set; }
 
-    [Display(Name = "Data de Início")]
     public DateOnly? DataInicio { get; set; }
 
-    [Display(Name = "Data de Fim")]
     public DateOnly? DataFim { get; set; }
 
     [ForeignKey("CNPJ_Empresa")]

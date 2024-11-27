@@ -4,68 +4,66 @@
     ViewData["Title"] = "Create";
 }
 
-<h1 class="ce-title">Cadastrar nova Vaga</h1>
-
-<div class="ce-container">
-    <div class="ce-header">
-        <h4 class="ce-subtitle">Vaga</h4>
-        <hr class="ce-divider" />
+<div class="cv-container">
+    <div class="cv-header">
+        <h4 class="cv-subtitle">Informações da Vaga</h4>
+        <hr class="cv-divider" />
     </div>
-    <div class="ce-form-container">
+    <div class="cv-form-container">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="ce-validation-summary text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="cv-validation-summary text-danger"></div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="TituloVaga" class="control-label ce-label"></label>
-                <input asp-for="TituloVaga" class="form-control ce-input" />
-                <span asp-validation-for="TituloVaga" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="TituloVaga" class="control-label cv-label"></label>
+                <input asp-for="TituloVaga" class="form-control cv-input" placeholder="Digite o título da vaga" />
+                <span asp-validation-for="TituloVaga" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="CNPJ_Empresa" class="control-label ce-label"></label>
-                <input asp-for="CNPJ_Empresa" class="form-control ce-input" />
-                <span asp-validation-for="CNPJ_Empresa" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="CNPJ_Empresa" class="control-label cv-label"></label>
+                <input asp-for="CNPJ_Empresa" class="form-control cv-input" placeholder="Digite o CNPJ da empresa" />
+                <span asp-validation-for="CNPJ_Empresa" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="Descricao" class="control-label ce-label"></label>
-                <textarea asp-for="Descricao" class="form-control ce-input ce-textarea"></textarea>
-                <span asp-validation-for="Descricao" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="Descricao" class="control-label cv-label"></label>
+                <textarea asp-for="Descricao" class="form-control cv-input cv-textarea" placeholder="Descreva a vaga"></textarea>
+                <span asp-validation-for="Descricao" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="Requisitos" class="control-label ce-label"></label>
-                <textarea asp-for="Requisitos" class="form-control ce-input ce-textarea"></textarea>
-                <span asp-validation-for="Requisitos" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="Requisitos" class="control-label cv-label"></label>
+                <textarea asp-for="Requisitos" class="form-control cv-input cv-textarea" placeholder="Liste os requisitos"></textarea>
+                <span asp-validation-for="Requisitos" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="AreaAtuacao" class="control-label ce-label"></label>
-                <input asp-for="AreaAtuacao" class="form-control ce-input" />
-                <span asp-validation-for="AreaAtuacao" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="AreaAtuacao" class="control-label cv-label"></label>
+                <input asp-for="AreaAtuacao" class="form-control cv-input" placeholder="Informe a área de atuação" />
+                <span asp-validation-for="AreaAtuacao" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="Modelo" class="control-label ce-label"></label>
-                <input asp-for="Modelo" class="form-control ce-input" />
-                <span asp-validation-for="Modelo" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="Modelo" class="control-label cv-label"></label>
+                <input asp-for="Modelo" class="form-control cv-input" placeholder="Modelo de trabalho (e.g., remoto)" />
+                <span asp-validation-for="Modelo" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="Localizacao" class="control-label ce-label"></label>
-                <input asp-for="Localizacao" class="form-control ce-input" />
-                <span asp-validation-for="Localizacao" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="Localizacao" class="control-label cv-label"></label>
+                <input asp-for="Localizacao" class="form-control cv-input" placeholder="Localização da vaga" />
+                <span asp-validation-for="Localizacao" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="form-group ce-form-group">
-                <label asp-for="TipoContrato" class="control-label ce-label"></label>
-                <input asp-for="TipoContrato" class="form-control ce-input" />
-                <span asp-validation-for="TipoContrato" class="ce-validation text-danger"></span>
+            <div class="form-group cv-form-group">
+                <label asp-for="TipoContrato" class="control-label cv-label"></label>
+                <input asp-for="TipoContrato" class="form-control cv-input" placeholder="Tipo de contrato (e.g., CLT, PJ)" />
+                <span asp-validation-for="TipoContrato" class="cv-validation text-danger"></span>
             </div>
 
-            <div class="ce-button-group">
-                <input type="submit" value="Create" class="btn ce-button-primary" />
-                <a asp-action="Index" class="btn ce-button-secondary">Back to List</a>
+            <div class="cv-button-group">
+                <input type="submit" value="Salvar" class="btn cv-button-primary" />
+                <a asp-action="Index" class="btn cv-button-secondary">Voltar à lista</a>
             </div>
         </form>
     </div>

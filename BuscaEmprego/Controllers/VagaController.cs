@@ -10,12 +10,14 @@ namespace BuscaEmprego.Controllers
     [Authorize(Roles = "admin, empresa")]
     public class VagaController : Controller
     {
-        private db_BuscaEmpregoContext _context;
-        public RepositoryVaga _RepositoryVaga;
+        private readonly db_BuscaEmpregoContext _context;
+        private readonly RepositoryVaga _RepositoryVaga;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public VagaController(db_BuscaEmpregoContext db)
+        public VagaController(db_BuscaEmpregoContext db, UserManager<IdentityUser> userManager)
         {
             _context = db;
+            _userManager = userManager;
             _RepositoryVaga = new RepositoryVaga(db);
         }
         //public async Task<IActionResult> Index()
@@ -27,34 +29,45 @@ namespace BuscaEmprego.Controllers
         public async Task<IActionResult> Index(string requisitos, string areaAtuacao, string modelo, string localizacao, string tipoContrato)
         {
             var vagas = from v in _context.Vaga
+                        .Include(v => v.CNPJ_EmpresaNavigation) // Inclui a navegação para a tabela Empresa
                         select v;
 
-            if (!String.IsNullOrEmpty(requisitos))
-            {
+            if (!string.IsNullOrEmpty(requisitos))
                 vagas = vagas.Where(v => v.Requisitos.Contains(requisitos));
-            }
-            if (!String.IsNullOrEmpty(areaAtuacao))
-            {
+            if (!string.IsNullOrEmpty(areaAtuacao))
                 vagas = vagas.Where(v => v.AreaAtuacao.Contains(areaAtuacao));
-            }
-            if (!String.IsNullOrEmpty(modelo))
-            {
+            if (!string.IsNullOrEmpty(modelo))
                 vagas = vagas.Where(v => v.Modelo.Contains(modelo));
-            }
-            if (!String.IsNullOrEmpty(localizacao))
-            {
+            if (!string.IsNullOrEmpty(localizacao))
                 vagas = vagas.Where(v => v.Localizacao.Contains(localizacao));
-            }
-            if (!String.IsNullOrEmpty(tipoContrato))
-            {
+            if (!string.IsNullOrEmpty(tipoContrato))
                 vagas = vagas.Where(v => v.TipoContrato.Contains(tipoContrato));
-            }
+
 
             return View(await vagas.ToListAsync());
         }
+
+
+        public async Task<IActionResult> IndexVagaEmpresa(string cnpj)
+        {
+            return View(await _RepositoryVaga.SelecionarTodosPorCnpjAsync(cnpj));
+        }
+
         public IActionResult Create()
         {
-            return View();
+            var userId = _userManager.GetUserId(User);
+
+            var _repositoryEmpresa = new RepositoryEmpresa(_context);
+            var candidato = _repositoryEmpresa.SelecionarUserId(userId);
+
+            var vaga = new Vaga { CNPJ_Empresa = candidato.CNPJ };
+
+            if (vaga.CNPJ_Empresa == null)
+            {
+                throw new ArgumentNullException(nameof(vaga));
+            }
+
+            return View(vaga);
         }
 
         [HttpPost]
@@ -111,11 +124,6 @@ namespace BuscaEmprego.Controllers
         public async Task<IActionResult> Details(int id)
         {
             return View(await _RepositoryVaga.SelecionarChaveAsync(id));
-        }
-
-        public async Task<IActionResult> IndexVagasEmpresa(string cnpj)
-        {
-            return View(await _RepositoryVaga.SelecionarTodosPorCnpjAsync(cnpj));
         }
     }
 }

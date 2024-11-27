@@ -1,0 +1,104 @@
+﻿.cv-container {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cv-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cv-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 0.5rem;
+}
+
+.cv-subtitle {
+    font-size: 1.5rem;
+    color: #666666;
+}
+
+.cv-divider {
+    border: 0;
+    border-top: 2px solid #eeeeee;
+    margin: 0.8rem auto;
+    width: 50%;
+}
+
+.cv-form-group {
+    margin-bottom: 1.2rem;
+}
+
+.cv-label {
+    font-weight: 600;
+    color: #444444;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.cv-input,
+.cv-textarea {
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    padding: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+    .cv-input:focus,
+    .cv-textarea:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+    }
+
+.cv-validation {
+    font-size: 0.85rem;
+    color: #e63946;
+    margin-top: 0.2rem;
+    display: block;
+}
+
+.cv-button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.cv-button-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .cv-button-primary:hover {
+        background-color: #0056b3;
+    }
+
+.cv-button-secondary {
+    background-color: #cccccc;
+    color: #333333;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .cv-button-secondary:hover {
+        background-color: #999999;
+    }

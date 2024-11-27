@@ -11,8 +11,7 @@ namespace Model.Models;
 public partial class Avaliacao
 {
     [Key]
-    [StringLength(10)]
-    public string id { get; set; }
+    public int id { get; set; }
 
     [Required]
     [StringLength(14)]

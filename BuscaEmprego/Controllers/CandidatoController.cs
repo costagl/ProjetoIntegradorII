@@ -56,6 +56,7 @@ namespace BuscaEmprego.Controllers
         public async Task<IActionResult> Edit(string cpf)
         {
             var candidato = await _repositoryCandidato.SelecionarChaveAsync(cpf);
+            
             return View(candidato);
         }
 

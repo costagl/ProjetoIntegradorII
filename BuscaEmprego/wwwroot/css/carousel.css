@@ -1,0 +1,70 @@
+﻿.carousel {
+    width: 100%;
+    max-height: 96vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-item {
+    transition: opacity 1.5s ease-in-out;
+}
+
+    .carousel-item img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: brightness(0.65);
+    }
+
+#slide-img-1 {
+    transform: translateY(-15%);
+    filter: brightness(0.8);
+}
+
+.text-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 3px 0px 15px black;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 5;
+}
+
+#text-overlay-2 {
+    font-size: 28px;
+}
+
+#btn-overlay {
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 20px;
+    text-shadow: none;
+    margin-top: 5px;
+}
+
+.fa-magnifying-glass,
+.fa-building,
+#fa-building-overlay,
+.fa-star,
+.fa-user {
+    padding-right: 4px;
+    font-size: 14px;
+}

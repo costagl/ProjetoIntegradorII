@@ -32,9 +32,20 @@ namespace BuscaEmprego.Controllers
             return View(await _repositoryExperiencia.SelecionarTodosPorCPFAsync(cpf));
         }
 
-        public IActionResult Create(string cpf)
+        public IActionResult Create()
         {
-            var experiencia = new Experiencia { CPF_Candidato = cpf };
+            var userId = _userManager.GetUserId(User);
+
+            var _repositoryCandidato = new RepositoryCandidato(_context);
+            var candidato = _repositoryCandidato.SelecionarUserId(userId);
+
+            var experiencia = new Experiencia { CPF_Candidato = candidato.CPF };
+
+            if (experiencia.CPF_Candidato == null)
+            {
+                throw new ArgumentNullException(nameof(experiencia));
+            }
+
             return View(experiencia);
         }
 

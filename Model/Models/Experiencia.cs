@@ -32,10 +32,8 @@ public partial class Experiencia
     [Unicode(false)]
     public string Cargo { get; set; }
 
-    [Display(Name = "Data do Início")]
     public DateOnly? DataInicio { get; set; }
 
-    [Display(Name = "Data do Fim")]
     public DateOnly? DataFim { get; set; }
 
     [StringLength(1800)]

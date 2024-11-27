@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label asp-for="CNPJ" class="control-label"></label>
-            <input asp-for="CNPJ" class="form-control" />
+            <input asp-for="CNPJ" class="form-control cnpj-mask" />
             <span asp-validation-for="CNPJ" class="text-danger"></span>
         </div>
 
@@ -41,4 +41,11 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+
+            $('.cnpj-mask').mask('00.000.000/0001-00');
+
+        });
+    </script>
 }

@@ -1,0 +1,16 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 16px;
+}
+
+header {
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    overflow: hidden;
+    box-shadow: 0px 1px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+}

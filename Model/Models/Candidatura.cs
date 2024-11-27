@@ -16,21 +16,26 @@ public partial class Candidatura
     [Required]
     [StringLength(14)]
     [Unicode(false)]
+    [Display(Name = "CPF do Candidato")]
     public string CPF_Candidato { get; set; }
 
     public int idVaga { get; set; }
 
+    [Display(Name = "Data da Candidatura")]
     public DateOnly? DataCandidatura { get; set; }
 
     [StringLength(30)]
     [Unicode(false)]
+    [Display(Name = "Status Candidatura")]
     public string Status { get; set; }
 
     [StringLength(400)]
     [Unicode(false)]
-    public string CartaApresetancao { get; set; }
+    [Display(Name = "Carta de Apresentação")]
+    public string CartaApresentacao { get; set; }
 
-    public bool? Curriculo { get; set; }
+    [Display(Name = "Currículo")]
+    public byte[] Curriculo { get; set; }
 
     [ForeignKey("CPF_Candidato")]
     [InverseProperty("Candidatura")]

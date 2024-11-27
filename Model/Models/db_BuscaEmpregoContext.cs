@@ -38,8 +38,6 @@ public partial class db_BuscaEmpregoContext : DbContext
     {
         modelBuilder.Entity<Avaliacao>(entity =>
         {
-            entity.Property(e => e.id).IsFixedLength();
-
             entity.HasOne(d => d.CNPJ_EmpresaNavigation).WithMany(p => p.Avaliacao)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Avaliacao_Empresa");

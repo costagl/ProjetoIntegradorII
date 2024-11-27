@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Model.Models.Candidatura>
+
+@{
+    ViewData["Title"] = "IndexCandidaturaEmpresa";
+}
+
+<div class="candidaturas-body">
+    <div class="candidaturas-header">
+        <h3>Lista de Candidaturas</h3>
+        <p>
+            <a class="btn btn-primary" asp-action="Create">Cadastrar Novo</a>
+        </p>
+    </div>
+
+    <div class="cards-candidaturas">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>ID Candidatura:</strong> @Html.DisplayFor(modelItem => item.id)</h5>
+                            <p class="card-text">
+                                <strong>Candidato:</strong> @Html.DisplayFor(modelItem => item.CPF_CandidatoNavigation.Nome)<br>
+                                <strong>ID da Vaga:</strong> @Html.DisplayFor(modelItem => item.idVaga)<br>
+                                <strong>Status:</strong> @Html.DisplayFor(modelItem => item.Status)<br>
+                                <strong>Carta de Apresentação:</strong> @Html.DisplayFor(modelItem => item.CartaApresentacao)<br>
+                                <strong>Currículo:</strong> @Html.DisplayFor(modelItem => item.Curriculo)<br>
+                            </p>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info">Detalhes</a>
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-warning">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -20,11 +20,9 @@ namespace Model.Repositories
 
             if (string.IsNullOrWhiteSpace(cnpj))
             {
-                // Retorna todos os registros se o CNPJ não for fornecido
                 return await _dbSet.ToListAsync();
             }
 
-            // Filtra os registros pelo CNPJ
             return await _db.Vaga.Where(item => item.CNPJ_Empresa == cnpj).ToListAsync();
         }
     }

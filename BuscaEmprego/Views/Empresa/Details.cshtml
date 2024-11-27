@@ -5,7 +5,7 @@
 }
 
 <body>
-    <div class="div-details-ambos">
+    <div class="div-details-geral">
         <div>
             <h3 class="header-title">Perfil Empresa</h3>
             <hr class="divider" />
@@ -33,8 +33,8 @@
         </div>
         <div class="action-links">
             @Html.ActionLink("Alterar", "Edit", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
-            @Html.ActionLink("Vagas", "IndexVagasEmpresa", "Vaga", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
-            @Html.ActionLink("Candidaturas", "Index", "Candidatura", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Vagas", "IndexVagaEmpresa", "Vaga", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
+            @Html.ActionLink("Candidaturas", "IndexCandidaturaEmpresa", "Candidatura", new { cnpj = Model.CNPJ }, new { @class = "btn-action" }) |
             <a asp-action="Index" class="btn-action">Voltar</a>
         </div>
     </div>

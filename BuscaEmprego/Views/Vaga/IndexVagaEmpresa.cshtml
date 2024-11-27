@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Model.Models.Vaga>
+
+@{
+    ViewData["Title"] = "IndexVagaEmpresa";
+}
+
+<div class="vagas-body">
+    <div class="vagas-filtro">
+        <h3>Filtro de Vagas</h3>
+
+        <form asp-controller="Vaga" asp-action="Index" method="get">
+            <p>
+                <a class="btn btn-primary" asp-action="Create">Cadastrar Novo</a>
+            </p>
+            <div class="form-group-all">
+                <div class="form-group">
+                    <label for="localizacao">Localização:</label>
+                    <input type="text" id="localizacao" name="localizacao" class="form-control" placeholder="Digite aqui...">
+                </div>
+
+                <div class="form-group">
+                    <label for="requisitos">Requisitos:</label>
+                    <input type="text" id="requisitos" name="requisitos" class="form-control" placeholder="Digite aqui...">
+                </div>
+
+                <div class="form-group">
+                    <label for="areaAtuacao">Área de Atuação:</label>
+                    <input type="text" id="areaAtuacao" name="areaAtuacao" class="form-control" placeholder="Digite aqui...">
+                </div>
+
+                <div class="form-group">
+                    <label for="modelo">Modelo de Trabalho:</label>
+                    <select id="modeloTrabalho" name="modelo" class="form-control">
+                        <option value="">Selecione...</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Remoto">Remoto</option>
+                        <option value="Hibrido">Híbrido</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoContrato">Tipo de Contrato:</label>
+                    <select id="tipoContrato" name="tipoContrato" class="form-control">
+                        <option value="">Selecione...</option>
+                        <option value="CLT">CLT</option>
+                        <option value="PJ">PJ</option>
+                        <option value="Estagio">Estágio</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-filter"></i>Filtrar</button>
+        </form>
+    </div>
+
+    <div class="cards-vagas">
+        <div class="column">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.TituloVaga)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.CNPJ_Empresa)</h6>
+                            <p class="card-text">
+                                <strong>Descrição:</strong> @Html.DisplayFor(modelItem => item.Descricao)<br>
+                                <strong>Requisitos:</strong> @Html.DisplayFor(modelItem => item.Requisitos)<br>
+                                <strong>Área de Atuação:</strong> @Html.DisplayFor(modelItem => item.AreaAtuacao)<br>
+                                <strong>Modelo:</strong> @Html.DisplayFor(modelItem => item.Modelo)<br>
+                                <strong>Localização:</strong> @Html.DisplayFor(modelItem => item.Localizacao)<br>
+                                <strong>Tipo de Contrato:</strong> @Html.DisplayFor(modelItem => item.TipoContrato)<br>
+                            </p>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info">Detalhes</a>
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-warning">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

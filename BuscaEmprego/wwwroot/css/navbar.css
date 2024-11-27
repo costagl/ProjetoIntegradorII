@@ -1,0 +1,29 @@
+﻿.navbar-custom {
+    background-color: #FFFFFF;
+    height: 50px;
+}
+
+    .navbar-custom .nav-link {
+        color: black;
+        line-height: 50px;
+    }
+
+        .navbar-custom .nav-link:hover {
+            color: gray;
+        }
+
+    .navbar-custom .navbar-brand img {
+        height: 40px;
+    }
+
+.nav-item {
+    padding-left: 10px;
+}
+
+.nav-cadastro {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.nav-login {
+}
